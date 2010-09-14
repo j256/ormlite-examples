@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dip"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+        <TextView
+            android:id="@+id/clickDate"
+            android:layout_width="fill_parent"
+            android:textSize="6pt"
+            android:singleLine="true"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/clickGroup"
+            android:textSize="6pt"
+            android:layout_width="fill_parent"
+            android:singleLine="true"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/clickName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="10pt"
+        android:textColor="#66ff66"
+            android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/clickCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="20pt"/>
+            
+</LinearLayout>
