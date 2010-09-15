@@ -14,6 +14,9 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.android.apptools.OpenHelperManager.SqliteOpenHelperFactory;
 import com.j256.ormlite.dao.Dao;
 
+/**
+ * Our Android UI activity which displays a text window when it is run.
+ */
 public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 
 	private final String LOG_TAG = getClass().getSimpleName();
