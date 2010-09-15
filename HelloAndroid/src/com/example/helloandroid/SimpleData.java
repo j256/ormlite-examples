@@ -35,11 +35,11 @@ public class SimpleData {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("id=").append(id).append(", ");
-		sb.append("string=").append(string).append(", ");
-		sb.append("millis=").append(millis).append(", ");
-		sb.append("date=").append(date).append(", ");
-		sb.append("even=").append(even).append(", ");
+		sb.append("id=").append(id);
+		sb.append(", ").append("string=").append(string);
+		sb.append(", ").append("millis=").append(millis);
+		sb.append(", ").append("date=").append(date);
+		sb.append(", ").append("even=").append(even);
 		return sb.toString();
 	}
 }
