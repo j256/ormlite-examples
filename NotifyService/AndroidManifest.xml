@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example">
+    <application android:icon="@drawable/icon" android:label="NotifyService">
+        <activity android:name=".MyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ThingActivity" android:label="Thing"/>
+        <service android:name=".GetStuffService"/>
+
+    </application>
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+</manifest>
