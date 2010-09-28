@@ -1,12 +1,12 @@
-package com.example;
+package com.example.notifyservice;
 
 import java.sql.SQLException;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.data.DatabaseHelper;
-import com.example.data.Thing;
+import com.example.notifyservice.data.DatabaseHelper;
+import com.example.notifyservice.data.Thing;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 
 /**

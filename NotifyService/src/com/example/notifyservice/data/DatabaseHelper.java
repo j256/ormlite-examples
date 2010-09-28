@@ -1,4 +1,4 @@
-package com.example.data;
+package com.example.notifyservice.data;
 
 import java.sql.SQLException;
 

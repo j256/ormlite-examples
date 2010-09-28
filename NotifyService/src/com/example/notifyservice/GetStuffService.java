@@ -1,4 +1,4 @@
-package com.example;
+package com.example.notifyservice;
 
 import java.sql.SQLException;
 import java.util.Random;
@@ -13,8 +13,8 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
 
-import com.example.data.DatabaseHelper;
-import com.example.data.Thing;
+import com.example.notifyservice.data.DatabaseHelper;
+import com.example.notifyservice.data.Thing;
 import com.j256.ormlite.android.apptools.OrmLiteBaseService;
 
 /**

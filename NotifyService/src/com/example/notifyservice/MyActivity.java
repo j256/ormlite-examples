@@ -1,4 +1,4 @@
-package com.example;
+package com.example.notifyservice;
 
 import android.app.Activity;
 import android.os.Bundle;
