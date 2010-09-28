@@ -46,7 +46,7 @@ public class GetStuffService extends OrmLiteBaseService<DatabaseHelper> {
 		// The ticker text, this uses a formatted string so our message could be localized
 		String tickerText = "New Thing: " + thing.getDescription();
 
-		createNewNotif(this, tickerText, "title", "content stuff", contentIntent, 1234, R.drawable.icon);
+		createNewNotif(this, tickerText, "NotifyService", "Test app for ORMLite", contentIntent, 1234, R.drawable.icon);
 
 		return START_NOT_STICKY;
 	}
