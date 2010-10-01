@@ -18,8 +18,7 @@ import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.stmt.StatementBuilder;
-import com.kagii.clickcounter.R;
+import com.j256.ormlite.stmt.QueryBuilder;
 import com.kagii.clickcounter.data.ClickCount;
 import com.kagii.clickcounter.data.DatabaseHelper;
 
@@ -80,9 +79,9 @@ public class ClickConfig extends OrmLiteBaseActivity<DatabaseHelper> {
 	private void fillList() throws SQLException {
 		Log.i(ClickConfig.class.getName(), "Show list again");
 		Dao<ClickCount, Integer> dao = getHelper().getClickDao();
-		StatementBuilder<ClickCount, Integer> builder = dao.statementBuilder();
+		QueryBuilder<ClickCount, Integer> builder = dao.queryBuilder();
 		builder.orderBy(ClickCount.DATE_FIELD_NAME, false).limit(30);
-		List<ClickCount> list = dao.query(builder.prepareStatement());
+		List<ClickCount> list = dao.query(builder.prepare());
 		ArrayAdapter<ClickCount> arrayAdapter = new CountsAdapter(this, R.layout.count_row, list);
 		listView.setAdapter(arrayAdapter);
 	}
