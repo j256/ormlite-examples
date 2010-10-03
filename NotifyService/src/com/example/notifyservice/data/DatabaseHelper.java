@@ -10,8 +10,6 @@ import com.j256.ormlite.android.apptools.AndroidTableUtils;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.db.DatabaseType;
-import com.j256.ormlite.db.SqliteAndroidDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
 
 /**
@@ -24,7 +22,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String DATABASE_NAME = "notify.db";
 	private static final int DATABASE_VERSION = 2;
 	private final String LOG_NAME = getClass().getName();
-	private static final DatabaseType databaseType = new SqliteAndroidDatabaseType();
 
 	private Dao<Thing, Integer> thingDao;
 
@@ -54,7 +51,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	public Dao<Thing, Integer> getThingDao() throws SQLException {
 		if (thingDao == null) {
-			thingDao = BaseDaoImpl.createDao(databaseType, getConnectionSource(), Thing.class);
+			thingDao = BaseDaoImpl.createDao(getConnectionSource(), Thing.class);
 		}
 		return thingDao;
 	}

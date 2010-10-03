@@ -9,8 +9,6 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.db.DatabaseType;
-import com.j256.ormlite.db.SqliteAndroidDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -25,8 +23,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	// any time you make changes to your database objects, you may have to increase the database version
 	private static final int DATABASE_VERSION = 2;
 
-	// the per-database information for Android Sqlite databases
-	private DatabaseType databaseType = new SqliteAndroidDatabaseType();
 	// the DAO object we use to access the SimpleData table
 	private Dao<SimpleData, Object> simpleDao = null;
 
@@ -42,7 +38,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
-			TableUtils.createTable(databaseType, connectionSource, SimpleData.class);
+			TableUtils.createTable(connectionSource, SimpleData.class);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);
@@ -57,7 +53,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onUpgrade");
-			TableUtils.dropTable(databaseType, connectionSource, SimpleData.class, true);
+			TableUtils.dropTable(connectionSource, SimpleData.class, true);
 			// after we drop the old databases, we create the new ones
 			onCreate(db);
 		} catch (SQLException e) {
@@ -72,7 +68,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 */
 	public Dao<SimpleData, Object> getSimpleDataDao() throws SQLException {
 		if (simpleDao == null) {
-			simpleDao = BaseDaoImpl.createDao(databaseType, getConnectionSource(), SimpleData.class);
+			simpleDao = BaseDaoImpl.createDao(getConnectionSource(), SimpleData.class);
 		}
 		return simpleDao;
 	}

@@ -9,8 +9,6 @@ import android.util.Log;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
-import com.j256.ormlite.db.DatabaseType;
-import com.j256.ormlite.db.SqliteAndroidDatabaseType;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -28,7 +26,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String DATABASE_NAME = "click.db";
 	private static final int DATABASE_VERSION = 3;
 
-	private DatabaseType databaseType = new SqliteAndroidDatabaseType();
 	private Dao<ClickGroup, Integer> groupDao;
 	private Dao<ClickCount, Integer> clickDao;
 
@@ -43,8 +40,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase sqliteDatabase, ConnectionSource connectionSource) {
 		try {
-			TableUtils.createTable(databaseType, connectionSource, ClickGroup.class);
-			TableUtils.createTable(databaseType, connectionSource, ClickCount.class);
+			TableUtils.createTable(connectionSource, ClickGroup.class);
+			TableUtils.createTable(connectionSource, ClickCount.class);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Unable to create datbases", e);
 		}
@@ -53,8 +50,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase sqliteDatabase, ConnectionSource connectionSource, int oldVer, int newVer) {
 		try {
-			TableUtils.dropTable(databaseType, connectionSource, ClickGroup.class, true);
-			TableUtils.dropTable(databaseType, connectionSource, ClickCount.class, true);
+			TableUtils.dropTable(connectionSource, ClickGroup.class, true);
+			TableUtils.dropTable(connectionSource, ClickCount.class, true);
 			onCreate(sqliteDatabase, connectionSource);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Unable to upgrade database from version " + oldVer + " to new "
@@ -64,14 +61,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	public Dao<ClickGroup, Integer> getGroupDao() throws SQLException {
 		if (groupDao == null) {
-			groupDao = BaseDaoImpl.createDao(databaseType, getConnectionSource(), ClickGroup.class);
+			groupDao = BaseDaoImpl.createDao(getConnectionSource(), ClickGroup.class);
 		}
 		return groupDao;
 	}
 
 	public Dao<ClickCount, Integer> getClickDao() throws SQLException {
 		if (clickDao == null) {
-			clickDao = BaseDaoImpl.createDao(databaseType, getConnectionSource(), ClickCount.class);
+			clickDao = BaseDaoImpl.createDao(getConnectionSource(), ClickCount.class);
 		}
 		return clickDao;
 	}
