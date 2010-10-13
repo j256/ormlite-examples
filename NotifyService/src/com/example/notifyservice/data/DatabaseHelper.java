@@ -6,11 +6,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.j256.ormlite.android.apptools.AndroidTableUtils;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 
 /**
  * Helper class which creates/updates our database and provides the DAOs.
@@ -32,7 +32,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
 		try {
-			AndroidTableUtils.createTable(connectionSource, Thing.class);
+			TableUtils.createTable(connectionSource, Thing.class);
 		} catch (SQLException e) {
 			Log.e(LOG_NAME, "Could not create new table for Thing", e);
 		}
@@ -42,7 +42,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int oldVersion,
 			int newVersion) {
 		try {
-			AndroidTableUtils.dropTable(connectionSource, Thing.class, true);
+			TableUtils.dropTable(connectionSource, Thing.class, true);
 			onCreate(sqLiteDatabase, connectionSource);
 		} catch (SQLException e) {
 			Log.e(LOG_NAME, "Could not upgrade the table for Thing", e);
