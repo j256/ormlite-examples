@@ -3,9 +3,9 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="lib" path="ormlite-android-4.2.jar" sourcepath="ormlite-android-4.2-sources.jar">
+	<classpathentry kind="lib" path="ormlite-android-4.3.jar" sourcepath="ormlite-android-4.3-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:ormlite-android-4.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:platform:/resource/HelloAndroid/ormlite-android-4.3-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
