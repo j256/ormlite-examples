@@ -21,7 +21,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	// name of the database file for your application -- change to something appropriate for your app
 	private static final String DATABASE_NAME = "helloAndroid.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 4;
 
 	// the DAO object we use to access the SimpleData table
 	private Dao<SimpleData, Object> simpleDao = null;
@@ -55,7 +55,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 			Log.i(DatabaseHelper.class.getName(), "onUpgrade");
 			TableUtils.dropTable(connectionSource, SimpleData.class, true);
 			// after we drop the old databases, we create the new ones
-			onCreate(db);
+			onCreate(db, connectionSource);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
 			throw new RuntimeException(e);
