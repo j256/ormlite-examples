@@ -47,7 +47,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 	private void doSampleDatabaseStuff(String action, TextView tv) {
 		try {
 			// get our dao
-			Dao<SimpleData, Object> simpleDao = getHelper().getSimpleDataDao();
+			Dao<SimpleData, Integer> simpleDao = getHelper().getSimpleDataDao();
 			// query for all of the data objects in the database
 			List<SimpleData> list = simpleDao.queryForAll();
 			// our string builder for building the content-view

@@ -24,7 +24,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final int DATABASE_VERSION = 5;
 
 	// the DAO object we use to access the SimpleData table
-	private Dao<SimpleData, Object> simpleDao = null;
+	private Dao<SimpleData, Integer> simpleDao = null;
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -66,7 +66,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
 	 * value.
 	 */
-	public Dao<SimpleData, Object> getSimpleDataDao() throws SQLException {
+	public Dao<SimpleData, Integer> getSimpleDataDao() throws SQLException {
 		if (simpleDao == null) {
 			simpleDao = BaseDaoImpl.createDao(getConnectionSource(), SimpleData.class);
 		}
