@@ -24,7 +24,7 @@ public class ClickCount implements Serializable {
 	@DatabaseField(columnName = DATE_FIELD_NAME)
 	private Date lastClickDate;
 
-	@DatabaseField
+	@DatabaseField(index = true)
 	private String name;
 
 	@DatabaseField

@@ -20,7 +20,7 @@ import com.j256.ormlite.table.TableUtils;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	private static final String DATABASE_NAME = "notify.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 	private final String LOG_NAME = getClass().getName();
 
 	private Dao<Thing, Integer> thingDao;
