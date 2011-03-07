@@ -51,7 +51,7 @@ public class CounterScreen extends OrmLiteBaseActivity<DatabaseHelper> {
 				fillText(R.id.clickDate, df.format(date));
 			}
 			ClickGroup group = clickCount.getGroup();
-			if (group.getId() == null) {
+			if (group == null) {
 				fillText(R.id.clickGroup, "<None>");
 			} else {
 				getHelper().getGroupDao().refresh(group);

@@ -184,7 +184,7 @@ public class CreateCounter extends OrmLiteBaseActivity<DatabaseHelper> {
 		}
 		if (clickGroup.getSelectedItem() != null) {
 			ClickGroup group = (ClickGroup) clickGroup.getSelectedItem();
-			if (group.getId() != null) {
+			if (group != null) {
 				c.setGroup(group);
 			}
 		}
@@ -199,9 +199,10 @@ public class CreateCounter extends OrmLiteBaseActivity<DatabaseHelper> {
 	}
 
 	private void loadFromObj(ClickCount c) throws SQLException {
-		if (c.getGroup().getId() != null) {
-			getHelper().getGroupDao().refresh(c.getGroup());
-			selectSpinnerGroup(c.getGroup().getId());
+		ClickGroup group = c.getGroup();
+		if (group != null) {
+			getHelper().getGroupDao().refresh(group);
+			selectSpinnerGroup(group.getId());
 		}
 		clickDescription.setText(c.getDescription());
 		clickName.setText(c.getName());
@@ -212,8 +213,7 @@ public class CreateCounter extends OrmLiteBaseActivity<DatabaseHelper> {
 		int count = ad.getCount();
 		for (int i = 0; i < count; i++) {
 			ClickGroup group = (ClickGroup) ad.getItem(i);
-
-			if (group.getId() != null && group.getId().equals(clickGroupId)) {
+			if (group != null && group.getId() != null && group.getId().equals(clickGroupId)) {
 				clickGroup.setSelection(i);
 				break;
 			}

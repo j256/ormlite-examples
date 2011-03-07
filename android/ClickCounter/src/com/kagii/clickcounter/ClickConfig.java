@@ -20,6 +20,7 @@ import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 import com.kagii.clickcounter.data.ClickCount;
+import com.kagii.clickcounter.data.ClickGroup;
 import com.kagii.clickcounter.data.DatabaseHelper;
 
 /**
@@ -101,14 +102,15 @@ public class ClickConfig extends OrmLiteBaseActivity<DatabaseHelper> {
 			}
 			ClickCount count = getItem(position);
 
-			try {
-				if (count.getGroup().getId() != null) {
-					getHelper().getGroupDao().refresh(count.getGroup());
+			ClickGroup group = count.getGroup();
+			if (group != null) {
+				try {
+					getHelper().getGroupDao().refresh(group);
+				} catch (SQLException e) {
+					throw new RuntimeException(e);
 				}
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
+				fillText(v, R.id.clickGroup, group.getName());
 			}
-			fillText(v, R.id.clickGroup, count.getGroup().getName());
 			fillText(v, R.id.clickName, count.getName());
 			if (count.getLastClickDate() == null) {
 				fillText(v, R.id.clickDate, "");
