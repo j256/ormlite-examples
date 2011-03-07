@@ -103,7 +103,9 @@ public class ClickConfig extends OrmLiteBaseActivity<DatabaseHelper> {
 			ClickCount count = getItem(position);
 
 			ClickGroup group = count.getGroup();
-			if (group != null) {
+			if (group == null) {
+				fillText(v, R.id.clickGroup, "");
+			} else {
 				try {
 					getHelper().getGroupDao().refresh(group);
 				} catch (SQLException e) {

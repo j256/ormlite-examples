@@ -24,7 +24,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 ************************************************/
 
 	private static final String DATABASE_NAME = "click.db";
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 6;
 
 	private Dao<ClickGroup, Integer> groupDao;
 	private Dao<ClickCount, Integer> clickDao;
