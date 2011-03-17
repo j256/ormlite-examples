@@ -17,7 +17,7 @@ import com.j256.ormlite.table.TableUtils;
 /**
  * Our Android UI activity which displays a text window when it is run.
  */
-public class HelloAndroid extends Activity {
+public class HelloAndroidH2 extends Activity {
 
 	private final String LOG_TAG = getClass().getSimpleName();
 	private ConnectionSource connectionSource;
@@ -26,7 +26,7 @@ public class HelloAndroid extends Activity {
 	{
 		if (connectionSource == null) {
 			try {
-				connectionSource = new JdbcConnectionSource("jdbc:h2:/data/data/com.example.helloandroid/databases/helloAndroidH2");
+				connectionSource = new JdbcConnectionSource("jdbc:h2:/data/data/com.example.helloandroidh2/databases/helloAndroidH2");
 				simpleDao = BaseDaoImpl.createDao(connectionSource, SimpleData.class);
 			} catch (SQLException e) {
 				throw new RuntimeException("Problems initializing database objects", e);
