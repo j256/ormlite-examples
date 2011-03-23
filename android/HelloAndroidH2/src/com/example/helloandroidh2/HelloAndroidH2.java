@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -27,7 +27,7 @@ public class HelloAndroidH2 extends Activity {
 		if (connectionSource == null) {
 			try {
 				connectionSource = new JdbcConnectionSource("jdbc:h2:/data/data/com.example.helloandroidh2/databases/helloAndroidH2");
-				simpleDao = BaseDaoImpl.createDao(connectionSource, SimpleData.class);
+				simpleDao = DaoManager.createDao(connectionSource, SimpleData.class);
 			} catch (SQLException e) {
 				throw new RuntimeException("Problems initializing database objects", e);
 			}

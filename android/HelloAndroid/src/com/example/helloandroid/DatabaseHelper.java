@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
-import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -68,7 +67,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 */
 	public Dao<SimpleData, Integer> getSimpleDataDao() throws SQLException {
 		if (simpleDao == null) {
-			simpleDao = BaseDaoImpl.createDao(getConnectionSource(), SimpleData.class);
+			simpleDao = getDao(SimpleData.class);
 		}
 		return simpleDao;
 	}

@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
-import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -61,14 +60,14 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	public Dao<ClickGroup, Integer> getGroupDao() throws SQLException {
 		if (groupDao == null) {
-			groupDao = BaseDaoImpl.createDao(getConnectionSource(), ClickGroup.class);
+			groupDao = getDao(ClickGroup.class);
 		}
 		return groupDao;
 	}
 
 	public Dao<ClickCount, Integer> getClickDao() throws SQLException {
 		if (clickDao == null) {
-			clickDao = BaseDaoImpl.createDao(getConnectionSource(), ClickCount.class);
+			clickDao = getDao(ClickCount.class);
 		}
 		return clickDao;
 	}
