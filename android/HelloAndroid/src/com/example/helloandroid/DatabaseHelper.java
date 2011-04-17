@@ -38,6 +38,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
 			TableUtils.createTable(connectionSource, SimpleData.class);
+
+			// here we try inserting data in the on-create as a test
 			Dao<SimpleData, Integer> dao = getSimpleDataDao();
 			long millis = System.currentTimeMillis();
 			SimpleData simple = new SimpleData(millis);

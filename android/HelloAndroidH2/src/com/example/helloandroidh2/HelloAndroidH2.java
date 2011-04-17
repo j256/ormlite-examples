@@ -22,11 +22,13 @@ public class HelloAndroidH2 extends Activity {
 	private final String LOG_TAG = getClass().getSimpleName();
 	private ConnectionSource connectionSource;
 	private Dao<SimpleData, Integer> simpleDao;
-	
+
 	{
 		if (connectionSource == null) {
 			try {
-				connectionSource = new JdbcConnectionSource("jdbc:h2:/data/data/com.example.helloandroidh2/databases/helloAndroidH2");
+				connectionSource =
+						new JdbcConnectionSource(
+								"jdbc:h2:/data/data/com.example.helloandroidh2/databases/helloAndroidH2");
 				simpleDao = DaoManager.createDao(connectionSource, SimpleData.class);
 			} catch (SQLException e) {
 				throw new RuntimeException("Problems initializing database objects", e);

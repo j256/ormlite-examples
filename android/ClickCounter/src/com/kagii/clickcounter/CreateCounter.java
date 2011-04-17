@@ -19,7 +19,6 @@ import android.widget.SpinnerAdapter;
 
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
-import com.kagii.clickcounter.R;
 import com.kagii.clickcounter.data.ClickCount;
 import com.kagii.clickcounter.data.ClickGroup;
 import com.kagii.clickcounter.data.DatabaseHelper;
