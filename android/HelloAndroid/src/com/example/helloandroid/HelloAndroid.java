@@ -15,7 +15,7 @@ import com.j256.ormlite.android.apptools.OpenHelperManager.SqliteOpenHelperFacto
 import com.j256.ormlite.dao.Dao;
 
 /**
- * Our Android UI activity which displays a text window when it is run.
+ * Sample Android UI activity which displays a text window when it is run.
  */
 public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 
