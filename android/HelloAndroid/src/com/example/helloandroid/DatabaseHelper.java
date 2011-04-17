@@ -38,6 +38,11 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
 			TableUtils.createTable(connectionSource, SimpleData.class);
+			Dao<SimpleData, Integer> dao = getSimpleDataDao();
+			long millis = System.currentTimeMillis();
+			SimpleData simple = new SimpleData(millis);
+			dao.create(simple);
+			Log.i(DatabaseHelper.class.getName(), "created new entry in onCreate: " + millis);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);

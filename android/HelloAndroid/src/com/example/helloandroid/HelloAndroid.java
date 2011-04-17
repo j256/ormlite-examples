@@ -71,11 +71,11 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			long millis = System.currentTimeMillis();
 			SimpleData simple = new SimpleData(millis);
 			// store it in the database
-			int ret = simpleDao.create(simple);
-			Log.i(LOG_TAG, "creating simple(" + millis + ") returned " + ret);
+			simpleDao.create(simple);
+			Log.i(LOG_TAG, "created simple(" + millis + ")");
 
 			// output it
-			sb.append("created new entry = ").append(ret).append("\n");
+			sb.append("created new entry\n");
 			sb.append("--------------------------------\n");
 			sb.append("new entry = ").append(simple).append("\n");
 			sb.append("--------------------------------\n");
