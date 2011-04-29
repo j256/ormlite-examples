@@ -2,5 +2,4 @@
 <resources>
     <string name="hello">Hello World, Lop!</string>
     <string name="app_name"></string>
-    <string name="open_helper_classname">com.example.notifyservice.data.DatabaseHelper</string>
 </resources>
