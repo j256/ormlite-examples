@@ -3,15 +3,11 @@ package com.example.helloandroid;
 import java.sql.SQLException;
 import java.util.List;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.android.apptools.OpenHelperManager.SqliteOpenHelperFactory;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 
 /**
@@ -20,14 +16,6 @@ import com.j256.ormlite.dao.Dao;
 public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 
 	private final String LOG_TAG = getClass().getSimpleName();
-
-	static {
-		OpenHelperManager.setOpenHelperFactory(new SqliteOpenHelperFactory() {
-			public OrmLiteSqliteOpenHelper getHelper(Context context) {
-				return new DatabaseHelper(context);
-			}
-		});
-	}
 
 	/**
 	 * Called when the activity is first created.
