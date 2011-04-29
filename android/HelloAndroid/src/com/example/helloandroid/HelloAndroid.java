@@ -43,16 +43,18 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			sb.append("got ").append(list.size()).append(" entries in ").append(action).append("\n");
 
 			// if we already have items in the database
-			if (list.size() > 0) {
-				// output the first one
-				SimpleData simple = list.get(0);
-				sb.append("--------------------------------\n");
-				sb.append("[0] = ").append(simple).append("\n");
-				sb.append("--------------------------------\n");
-				// delete it
+			int simpleC = 0;
+			for (SimpleData simple : list) {
+				sb.append("------------------------------------------\n");
+				sb.append("[" + simpleC + "] = ").append(simple).append("\n");
+				simpleC++;
+			}
+			sb.append("------------------------------------------\n");
+			for (SimpleData simple : list) {
 				int ret = simpleDao.delete(simple);
-				sb.append("deleted entry = ").append(ret).append("\n");
-				Log.i(LOG_TAG, "deleting simple(" + simple.millis + ") returned " + ret);
+				sb.append("deleted id " + simple.id + " returned ").append(ret).append("\n");
+				Log.i(LOG_TAG, "deleting simple(" + simple.id + ") returned " + ret);
+				simpleC++;
 			}
 
 			// create a new simple object
@@ -63,13 +65,13 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			Log.i(LOG_TAG, "created simple(" + millis + ")");
 
 			// output it
-			sb.append("created new entry\n");
-			sb.append("--------------------------------\n");
-			sb.append("new entry = ").append(simple).append("\n");
-			sb.append("--------------------------------\n");
+			sb.append("------------------------------------------\n");
+			sb.append("created new entry:\n");
+			sb.append(simple).append("\n");
 			tv.setText(sb.toString());
 		} catch (SQLException e) {
 			Log.e(LOG_TAG, "Database exception", e);
+			tv.setText("Database exeption: " + e.getMessage());
 			return;
 		}
 	}
