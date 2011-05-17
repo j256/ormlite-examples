@@ -2,6 +2,7 @@ package com.example.helloandroid;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -57,17 +58,28 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 				simpleC++;
 			}
 
-			// create a new simple object
-			long millis = System.currentTimeMillis();
-			SimpleData simple = new SimpleData(millis);
-			// store it in the database
-			simpleDao.create(simple);
-			Log.i(LOG_TAG, "created simple(" + millis + ")");
+			int createNum;
+			do {
+				createNum = new Random().nextInt(3) + 1;
+			} while (createNum == list.size());
+			for (int i = 0; i < createNum; i++) {
+				// create a new simple object
+				long millis = System.currentTimeMillis();
+				SimpleData simple = new SimpleData(millis);
+				// store it in the database
+				simpleDao.create(simple);
+				Log.i(LOG_TAG, "created simple(" + millis + ")");
+				// output it
+				sb.append("------------------------------------------\n");
+				sb.append("created new entry # ").append(i + 1).append(":\n");
+				sb.append(simple).append("\n");
+				try {
+					Thread.sleep(2);
+				} catch (InterruptedException e) {
+					// ignore
+				}
+			}
 
-			// output it
-			sb.append("------------------------------------------\n");
-			sb.append("created new entry:\n");
-			sb.append(simple).append("\n");
 			tv.setText(sb.toString());
 		} catch (SQLException e) {
 			Log.e(LOG_TAG, "Database exception", e);
