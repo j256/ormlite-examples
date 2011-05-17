@@ -71,10 +71,10 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 				Log.i(LOG_TAG, "created simple(" + millis + ")");
 				// output it
 				sb.append("------------------------------------------\n");
-				sb.append("created new entry # ").append(i + 1).append(":\n");
+				sb.append("created new entry #").append(i + 1).append(":\n");
 				sb.append(simple).append("\n");
 				try {
-					Thread.sleep(2);
+					Thread.sleep(5);
 				} catch (InterruptedException e) {
 					// ignore
 				}
