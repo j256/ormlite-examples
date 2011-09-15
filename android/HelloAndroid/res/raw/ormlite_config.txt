@@ -1,5 +1,5 @@
 #
-# generated on 2011/09/14 09:02:30
+# generated on 2011/09/15 01:40:10
 #
 # --table-start--
 dataClass=com.example.helloandroid.SimpleData
@@ -10,6 +10,7 @@ fieldName=id
 canBeNull=true
 generatedId=true
 maxForeignAutoRefreshLevel=2
+maxEagerForeignCollectionLevel=1
 persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
@@ -17,63 +18,28 @@ fieldName=string
 canBeNull=true
 indexName=simpledata_string_idx
 maxForeignAutoRefreshLevel=2
+maxEagerForeignCollectionLevel=1
 persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=millis
 canBeNull=true
 maxForeignAutoRefreshLevel=2
+maxEagerForeignCollectionLevel=1
 persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=date
 canBeNull=true
 maxForeignAutoRefreshLevel=2
+maxEagerForeignCollectionLevel=1
 persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=even
 canBeNull=true
 maxForeignAutoRefreshLevel=2
-persisterClass=com.j256.ormlite.field.types.VoidType
-# --field-end--
-# --table-fields-end--
-# --table-end--
-#################################
-# --table-start--
-dataClass=com.example.helloandroid.SimpleData2
-tableName=simpledata2
-# --table-fields-start--
-# --field-start--
-fieldName=id
-canBeNull=true
-generatedId=true
-maxForeignAutoRefreshLevel=2
-persisterClass=com.j256.ormlite.field.types.VoidType
-# --field-end--
-# --field-start--
-fieldName=string
-canBeNull=true
-indexName=simpledata2_string_idx
-maxForeignAutoRefreshLevel=2
-persisterClass=com.j256.ormlite.field.types.VoidType
-# --field-end--
-# --field-start--
-fieldName=millis
-canBeNull=true
-maxForeignAutoRefreshLevel=2
-persisterClass=com.j256.ormlite.field.types.VoidType
-# --field-end--
-# --field-start--
-fieldName=date
-canBeNull=true
-maxForeignAutoRefreshLevel=2
-persisterClass=com.j256.ormlite.field.types.VoidType
-# --field-end--
-# --field-start--
-fieldName=even
-canBeNull=true
-maxForeignAutoRefreshLevel=2
+maxEagerForeignCollectionLevel=1
 persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --table-fields-end--
