@@ -1,5 +1,5 @@
 #
-# generated on 2011/09/15 01:40:10
+# generated on 2011/09/15 11:29:29
 #
 # --table-start--
 dataClass=com.example.helloandroid.SimpleData
@@ -9,38 +9,23 @@ tableName=simpledata
 fieldName=id
 canBeNull=true
 generatedId=true
-maxForeignAutoRefreshLevel=2
-maxEagerForeignCollectionLevel=1
-persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=string
 canBeNull=true
 indexName=simpledata_string_idx
-maxForeignAutoRefreshLevel=2
-maxEagerForeignCollectionLevel=1
-persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=millis
 canBeNull=true
-maxForeignAutoRefreshLevel=2
-maxEagerForeignCollectionLevel=1
-persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=date
 canBeNull=true
-maxForeignAutoRefreshLevel=2
-maxEagerForeignCollectionLevel=1
-persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --field-start--
 fieldName=even
 canBeNull=true
-maxForeignAutoRefreshLevel=2
-maxEagerForeignCollectionLevel=1
-persisterClass=com.j256.ormlite.field.types.VoidType
 # --field-end--
 # --table-fields-end--
 # --table-end--
