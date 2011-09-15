@@ -24,7 +24,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Log.i(LOG_TAG, "creating " + getClass());
+		Log.i(LOG_TAG, "creating " + getClass() + " at " + System.currentTimeMillis());
 		TextView tv = new TextView(this);
 		doSampleDatabaseStuff("onCreate", tv);
 		setContentView(tv);
@@ -81,6 +81,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			}
 
 			tv.setText(sb.toString());
+			Log.i(LOG_TAG, "Done with page at " + System.currentTimeMillis());
 		} catch (SQLException e) {
 			Log.e(LOG_TAG, "Database exception", e);
 			tv.setText("Database exeption: " + e.getMessage());
