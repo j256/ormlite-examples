@@ -84,7 +84,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			Log.i(LOG_TAG, "Done with page at " + System.currentTimeMillis());
 		} catch (SQLException e) {
 			Log.e(LOG_TAG, "Database exception", e);
-			tv.setText("Database exeption: " + e.getMessage());
+			tv.setText("Database exeption: " + e);
 			return;
 		}
 	}
