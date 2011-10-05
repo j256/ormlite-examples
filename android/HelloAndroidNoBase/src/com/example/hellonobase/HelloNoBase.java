@@ -1,4 +1,4 @@
-package com.example.helloandroid;
+package com.example.hellonobase;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,7 +15,7 @@ import com.j256.ormlite.dao.Dao;
 /**
  * Sample Android UI activity which displays a text window when it is run.
  */
-public class HelloAndroid extends Activity {
+public class HelloNoBase extends Activity {
 
 	private final String LOG_TAG = getClass().getSimpleName();
 	private DatabaseHelper databaseHelper = null;
