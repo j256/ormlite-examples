@@ -37,6 +37,7 @@ public class HelloNoBase extends Activity {
 		super.onDestroy();
 		if (databaseHelper != null) {
 			OpenHelperManager.releaseHelper();
+			databaseHelper = null;
 		}
 	}
 
