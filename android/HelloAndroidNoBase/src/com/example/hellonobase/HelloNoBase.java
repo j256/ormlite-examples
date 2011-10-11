@@ -10,14 +10,24 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.j256.ormlite.dao.Dao;
 
 /**
  * Sample Android UI activity which displays a text window when it is run.
+ * 
+ * <p>
+ * <b>NOTE:</b> This does <i>not</i> extend the {@link OrmLiteBaseActivity} but instead manages the helper itself
+ * locally using the {@link #databaseHelper} field, the {@link #getHelper()} private method, and the call to
+ * {@link OpenHelperManager#releaseHelper()} inside of the {@link #onDestroy()} method.
+ * </p>
  */
 public class HelloNoBase extends Activity {
 
 	private final String LOG_TAG = getClass().getSimpleName();
+	/**
+	 * You'll need this in your class to cache the helper in the class.
+	 */
 	private DatabaseHelper databaseHelper = null;
 
 	/**
@@ -35,12 +45,19 @@ public class HelloNoBase extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+
+		/*
+		 * You'll need this in your class to release the helper when done.
+		 */
 		if (databaseHelper != null) {
 			OpenHelperManager.releaseHelper();
 			databaseHelper = null;
 		}
 	}
 
+	/**
+	 * You'll need this in your class to get the helper from the manager once per class.
+	 */
 	private DatabaseHelper getHelper() {
 		if (databaseHelper == null) {
 			databaseHelper = OpenHelperManager.getHelper(this, DatabaseHelper.class);
@@ -49,7 +66,7 @@ public class HelloNoBase extends Activity {
 	}
 
 	/**
-	 * Do our sample database stuff.
+	 * Do our sample database stuff as an example.
 	 */
 	private void doSampleDatabaseStuff(String action, TextView tv) {
 		try {

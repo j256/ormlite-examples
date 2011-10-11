@@ -17,6 +17,11 @@ import com.j256.ormlite.table.TableUtils;
 
 /**
  * Our Android UI activity which displays a text window when it is run.
+ * 
+ * <p>
+ * <b>NOTE:</b> This uses the unsupported JDBC interface and the included version of the H2 database instead of the
+ * built in SQLite database. This is only here as a proof of concept.
+ * </p>
  */
 public class HelloAndroidH2 extends Activity {
 
