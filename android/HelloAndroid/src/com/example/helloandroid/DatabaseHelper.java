@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.RuntimeExceptionDao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
@@ -24,6 +25,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
 	// the DAO object we use to access the SimpleData table
 	private Dao<SimpleData, Integer> simpleDao = null;
+	private RuntimeExceptionDao<SimpleData, Integer> simpleRuntimeDao = null;
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -38,20 +40,20 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
 			TableUtils.createTable(connectionSource, SimpleData.class);
-
-			// here we try inserting data in the on-create as a test
-			Dao<SimpleData, Integer> dao = getSimpleDataDao();
-			long millis = System.currentTimeMillis();
-			// create some entries in the onCreate
-			SimpleData simple = new SimpleData(millis);
-			dao.create(simple);
-			simple = new SimpleData(millis + 1);
-			dao.create(simple);
-			Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate: " + millis);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);
 		}
+
+		// here we try inserting data in the on-create as a test
+		RuntimeExceptionDao<SimpleData, Integer> dao = getSimpleDataDao();
+		long millis = System.currentTimeMillis();
+		// create some entries in the onCreate
+		SimpleData simple = new SimpleData(millis);
+		dao.create(simple);
+		simple = new SimpleData(millis + 1);
+		dao.create(simple);
+		Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate: " + millis);
 	}
 
 	/**
@@ -75,11 +77,22 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
 	 * value.
 	 */
-	public Dao<SimpleData, Integer> getSimpleDataDao() throws SQLException {
+	public Dao<SimpleData, Integer> getDao() throws SQLException {
 		if (simpleDao == null) {
 			simpleDao = getDao(SimpleData.class);
 		}
 		return simpleDao;
+	}
+
+	/**
+	 * Returns the RuntimeExceptionDao (Database Access Object) version of a Dao for our SimpleData class. It will
+	 * create it or just give the cached value. RuntimeExceptionDao only through RuntimeExceptions.
+	 */
+	public RuntimeExceptionDao<SimpleData, Integer> getSimpleDataDao() {
+		if (simpleRuntimeDao == null) {
+			simpleRuntimeDao = getRuntimeExceptionDao(SimpleData.class);
+		}
+		return simpleRuntimeDao;
 	}
 
 	/**
@@ -88,6 +101,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void close() {
 		super.close();
-		simpleDao = null;
+		simpleRuntimeDao = null;
 	}
 }
