@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="h2-1.2.128.jar" sourcepath="h2-1.2.128-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/HelloAndroid/h2-1.2.128-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ormlite-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ormlite-jdbc"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
