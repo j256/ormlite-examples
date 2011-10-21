@@ -15,18 +15,28 @@ import com.j256.ormlite.table.TableUtils;
  * Database helper class used to manage the creation and upgrading of your database. This class also usually provides
  * the DAOs used by the other classes.
  */
-public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
+public class DatabaseHelper2 extends OrmLiteSqliteOpenHelper {
 
 	// name of the database file for your application -- change to something appropriate for your app
-	private static final String DATABASE_NAME = "helloNoBase.db";
+	private static final String DATABASE_NAME = "helloTwoDb2.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
-	// the DAO object we use to access the SimpleData table
-	private Dao<SimpleData, Integer> simpleDao = null;
+	// the DAO object we use to access the ComplexData table
+	private Dao<ComplexData, Integer> complexDao = null;
 
-	public DatabaseHelper(Context context) {
+	// we do this so there is only one helper
+	private static DatabaseHelper2 helper = null;
+
+	private DatabaseHelper2(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+	}
+
+	public static synchronized DatabaseHelper2 getHelper(Context context) {
+		if (helper == null) {
+			helper = new DatabaseHelper2(context);
+		}
+		return helper;
 	}
 
 	/**
@@ -36,20 +46,20 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
 		try {
-			Log.i(DatabaseHelper.class.getName(), "onCreate");
-			TableUtils.createTable(connectionSource, SimpleData.class);
+			Log.i(DatabaseHelper2.class.getName(), "onCreate");
+			TableUtils.createTable(connectionSource, ComplexData.class);
 
 			// here we try inserting data in the on-create as a test
-			Dao<SimpleData, Integer> dao = getSimpleDataDao();
+			Dao<ComplexData, Integer> dao = getComplexDataDao();
 			long millis = System.currentTimeMillis();
 			// create some entries in the onCreate
-			SimpleData simple = new SimpleData(millis);
-			dao.create(simple);
-			simple = new SimpleData(millis + 1);
-			dao.create(simple);
-			Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate: " + millis);
+			ComplexData complex = new ComplexData(millis);
+			dao.create(complex);
+			complex = new ComplexData(millis + 1);
+			dao.create(complex);
+			Log.i(DatabaseHelper2.class.getName(), "created new ComplexData entries in onCreate: " + millis);
 		} catch (SQLException e) {
-			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
+			Log.e(DatabaseHelper2.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -61,25 +71,25 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource, int oldVersion, int newVersion) {
 		try {
-			Log.i(DatabaseHelper.class.getName(), "onUpgrade");
-			TableUtils.dropTable(connectionSource, SimpleData.class, true);
+			Log.i(DatabaseHelper2.class.getName(), "onUpgrade");
+			TableUtils.dropTable(connectionSource, ComplexData.class, true);
 			// after we drop the old databases, we create the new ones
 			onCreate(db, connectionSource);
 		} catch (SQLException e) {
-			Log.e(DatabaseHelper.class.getName(), "Can't drop databases", e);
+			Log.e(DatabaseHelper2.class.getName(), "Can't drop databases", e);
 			throw new RuntimeException(e);
 		}
 	}
 
 	/**
-	 * Returns the Database Access Object (DAO) for our SimpleData class. It will create it or just give the cached
+	 * Returns the Database Access Object (DAO) for our ComplexData class. It will create it or just give the cached
 	 * value.
 	 */
-	public Dao<SimpleData, Integer> getSimpleDataDao() throws SQLException {
-		if (simpleDao == null) {
-			simpleDao = getDao(SimpleData.class);
+	public Dao<ComplexData, Integer> getComplexDataDao() throws SQLException {
+		if (complexDao == null) {
+			complexDao = getDao(ComplexData.class);
 		}
-		return simpleDao;
+		return complexDao;
 	}
 
 	/**
@@ -88,6 +98,6 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void close() {
 		super.close();
-		simpleDao = null;
+		complexDao = null;
 	}
 }
