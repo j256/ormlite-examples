@@ -79,9 +79,9 @@ public class HelloAndroidH2 extends Activity {
 			}
 			sb.append("------------------------------------------\n");
 			for (SimpleData simple : list) {
-				int ret = simpleDao.delete(simple);
-				sb.append("deleted id " + simple.id + " returned ").append(ret).append("\n");
-				Log.i(LOG_TAG, "deleting simple(" + simple.id + ") returned " + ret);
+				simpleDao.delete(simple);
+				sb.append("deleted id ").append(simple.id).append("\n");
+				Log.i(LOG_TAG, "deleting simple(" + simple.id + ")");
 				simpleC++;
 			}
 
