@@ -82,7 +82,7 @@ public class HelloNoBase extends Activity {
 			int simpleC = 0;
 			for (SimpleData simple : list) {
 				sb.append("------------------------------------------\n");
-				sb.append("[" + simpleC + "] = ").append(simple).append("\n");
+				sb.append("[").append(simpleC).append("] = ").append(simple).append("\n");
 				simpleC++;
 			}
 			sb.append("------------------------------------------\n");

@@ -108,17 +108,16 @@ public class HelloTwoDbs extends Activity {
 		sb.append("------------------------------------------\n");
 
 		// if we already have items in the database
-		int simpleC = 0;
+		int objC = 0;
 		for (SimpleData simple : list) {
-			sb.append("[" + simpleC + "] = ").append(simple).append("\n");
-			simpleC++;
+			sb.append("[").append(objC).append("] = ").append(simple).append("\n");
+			objC++;
 		}
 		sb.append("------------------------------------------\n");
 		for (SimpleData simple : list) {
 			simpleDao.delete(simple);
 			sb.append("deleted SimpleData id ").append(simple.id).append("\n");
 			Log.i(LOG_TAG, "deleting SimpleData(" + simple.id + ")");
-			simpleC++;
 		}
 
 		int createNum;
@@ -154,17 +153,16 @@ public class HelloTwoDbs extends Activity {
 		sb.append("------------------------------------------\n");
 
 		// if we already have items in the database
-		int simpleC = 0;
+		int objC = 0;
 		for (ComplexData simple : list) {
-			sb.append("[" + simpleC + "] = ").append(simple).append("\n");
-			simpleC++;
+			sb.append("[").append(objC).append("] = ").append(simple).append("\n");
+			objC++;
 		}
 		sb.append("------------------------------------------\n");
 		for (ComplexData simple : list) {
 			complexDao.delete(simple);
 			sb.append("deleted ComplexData id ").append(simple.id).append("\n");
 			Log.i(LOG_TAG, "deleting ComplexData simple(" + simple.id + ")");
-			simpleC++;
 		}
 
 		int createNum;

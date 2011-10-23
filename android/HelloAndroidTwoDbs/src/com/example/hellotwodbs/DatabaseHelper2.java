@@ -1,6 +1,7 @@
 package com.example.hellotwodbs;
 
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -27,15 +28,21 @@ public class DatabaseHelper2 extends OrmLiteSqliteOpenHelper {
 
 	// we do this so there is only one helper
 	private static DatabaseHelper2 helper = null;
+	private static final AtomicInteger usageCounter = new AtomicInteger(0);
 
 	private DatabaseHelper2(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
+	/**
+	 * Get the helper, possibly constructing it if necessary. For each call to this method, there should be 1 and only 1
+	 * call to {@link #close()}.
+	 */
 	public static synchronized DatabaseHelper2 getHelper(Context context) {
 		if (helper == null) {
 			helper = new DatabaseHelper2(context);
 		}
+		usageCounter.incrementAndGet();
 		return helper;
 	}
 
@@ -93,11 +100,15 @@ public class DatabaseHelper2 extends OrmLiteSqliteOpenHelper {
 	}
 
 	/**
-	 * Close the database connections and clear any cached DAOs.
+	 * Close the database connections and clear any cached DAOs. For each call to {@link #getHelper(Context)}, there
+	 * should be 1 and only 1 call to this method. If there were 3 calls to {@link #getHelper(Context)} then on the 3rd
+	 * call to this method, the helper and the underlying database connections will be closed.
 	 */
 	@Override
 	public void close() {
-		super.close();
-		complexDao = null;
+		if (usageCounter.decrementAndGet() == 0) {
+			super.close();
+			complexDao = null;
+		}
 	}
 }
