@@ -8,7 +8,15 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ormlite-core"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ormlite-jdbc"/>
+	<classpathentry kind="lib" path="ormlite-jdbc-4.28.jar" sourcepath="ormlite-jdbc-4.28-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/HelloAndroid/ormlite-jdbc-4.28-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="ormlite-core-4.28.jar" sourcepath="ormlite-core-4.28-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/HelloAndroid/ormlite-core-4.28-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
