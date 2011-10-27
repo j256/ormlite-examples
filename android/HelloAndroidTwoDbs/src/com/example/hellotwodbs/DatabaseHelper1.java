@@ -42,6 +42,7 @@ public class DatabaseHelper1 extends OrmLiteSqliteOpenHelper {
 		if (helper == null) {
 			helper = new DatabaseHelper1(context);
 		}
+		usageCounter.incrementAndGet();
 		return helper;
 	}
 
