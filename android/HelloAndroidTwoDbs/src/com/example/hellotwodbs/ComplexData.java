@@ -3,7 +3,7 @@ package com.example.hellotwodbs;
 import com.j256.ormlite.field.DatabaseField;
 
 /**
- * A simple demonstration object we are creating and persisting to the database.
+ * Another demonstration object we are creating and persisting to the database.
  */
 public class ComplexData {
 
@@ -11,7 +11,7 @@ public class ComplexData {
 	@DatabaseField(generatedId = true)
 	int id;
 	@DatabaseField
-	long millis;
+	long secs;
 	@DatabaseField
 	boolean odd;
 
@@ -20,15 +20,15 @@ public class ComplexData {
 	}
 
 	public ComplexData(long millis) {
-		this.millis = millis / 1000;
-		this.odd = ((this.millis % 2) == 1);
+		this.secs = millis / 1000;
+		this.odd = ((this.secs % 2) == 1);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("id=").append(id);
-		sb.append(", ").append("millis=").append(millis);
+		sb.append(", ").append("secs=").append(secs);
 		sb.append(", ").append("odd=").append(odd);
 		return sb.toString();
 	}
