@@ -21,7 +21,7 @@ public class DatabaseHelper1 extends OrmLiteSqliteOpenHelper {
 	// name of the database file for your application -- change to something appropriate for your app
 	private static final String DATABASE_NAME = "helloTwoDb1.db";
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 
 	// the DAO object we use to access the SimpleData table
 	private Dao<SimpleData, Integer> simpleDao = null;
@@ -109,6 +109,7 @@ public class DatabaseHelper1 extends OrmLiteSqliteOpenHelper {
 		if (usageCounter.decrementAndGet() == 0) {
 			super.close();
 			simpleDao = null;
+			helper = null;
 		}
 	}
 }
