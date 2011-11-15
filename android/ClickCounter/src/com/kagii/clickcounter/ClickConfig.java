@@ -81,7 +81,7 @@ public class ClickConfig extends OrmLiteBaseActivity<DatabaseHelper> {
 		Log.i(ClickConfig.class.getName(), "Show list again");
 		Dao<ClickCount, Integer> dao = getHelper().getClickDao();
 		QueryBuilder<ClickCount, Integer> builder = dao.queryBuilder();
-		builder.orderBy(ClickCount.DATE_FIELD_NAME, false).limit(30L);
+		builder.orderBy(ClickCount.DATE_FIELD_NAME, false).limit(30);
 		List<ClickCount> list = dao.query(builder.prepare());
 		ArrayAdapter<ClickCount> arrayAdapter = new CountsAdapter(this, R.layout.count_row, list);
 		listView.setAdapter(arrayAdapter);
