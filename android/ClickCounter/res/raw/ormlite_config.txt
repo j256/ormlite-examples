@@ -1,0 +1,46 @@
+#
+# generated on 2012/02/28 03:23:38
+#
+# --table-start--
+dataClass=com.kagii.clickcounter.data.ClickCount
+tableName=clickcount
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=lastClickDate
+columnName=lastClickDate
+# --field-end--
+# --field-start--
+fieldName=name
+indexName=clickcount_name_idx
+# --field-end--
+# --field-start--
+fieldName=description
+# --field-end--
+# --field-start--
+fieldName=value
+# --field-end--
+# --field-start--
+fieldName=group
+foreign=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.kagii.clickcounter.data.ClickGroup
+tableName=clickgroup
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

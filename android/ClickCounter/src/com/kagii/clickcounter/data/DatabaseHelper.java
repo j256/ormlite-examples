@@ -10,6 +10,7 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.kagii.clickcounter.R;
 
 /**
  * Database helper which creates and upgrades the database and provides the DAOs for the app.
@@ -29,7 +30,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private Dao<ClickCount, Integer> clickDao;
 
 	public DatabaseHelper(Context context) {
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
 	}
 
 	/************************************************
