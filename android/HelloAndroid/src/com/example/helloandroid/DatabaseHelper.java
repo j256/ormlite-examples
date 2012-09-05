@@ -101,6 +101,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	@Override
 	public void close() {
 		super.close();
+		simpleDao = null;
 		simpleRuntimeDao = null;
 	}
 }
