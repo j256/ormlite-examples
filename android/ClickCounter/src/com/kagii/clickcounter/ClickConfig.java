@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ import com.kagii.clickcounter.data.DatabaseHelper;
  */
 public class ClickConfig extends OrmLiteBaseActivity<DatabaseHelper> {
 
-	private final DateFormat df = new SimpleDateFormat("M/dd/yy HH:mm");
+	private final DateFormat df = new SimpleDateFormat("M/dd/yy HH:mm", Locale.US);
 
 	private ListView listView;
 
