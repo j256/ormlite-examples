@@ -2,6 +2,7 @@ package com.example.helloandroid;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import com.j256.ormlite.field.DatabaseField;
 
@@ -37,9 +38,9 @@ public class SimpleData {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("id=").append(id);
-		sb.append(", ").append("string=").append(string);
-		sb.append(", ").append("millis=").append(millis);
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss.S");
+		sb.append(", ").append("str=").append(string);
+		sb.append(", ").append("ms=").append(millis);
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd HH:mm:ss", Locale.US);
 		sb.append(", ").append("date=").append(dateFormatter.format(date));
 		sb.append(", ").append("even=").append(even);
 		return sb.toString();
