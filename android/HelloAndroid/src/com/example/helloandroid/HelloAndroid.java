@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 		super.onCreate(savedInstanceState);
 		Log.i(LOG_TAG, "creating " + getClass() + " at " + System.currentTimeMillis());
 		TextView tv = new TextView(this);
+		tv.setMovementMethod(new ScrollingMovementMethod());
 		doSampleDatabaseStuff("onCreate", tv);
 		setContentView(tv);
 	}
