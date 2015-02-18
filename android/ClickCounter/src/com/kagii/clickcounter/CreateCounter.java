@@ -145,7 +145,7 @@ public class CreateCounter extends OrmLiteBaseActivity<DatabaseHelper> {
 
 			refreshGroupSpinnerEntries(groupDao);
 
-			if (savedInstanceState != null) {
+			if (savedInstanceState != null && savedInstanceState.get(CLICK_COUNT_ID) != null) {
 				loadFromObj((ClickCount) savedInstanceState.get(CLICK_COUNT_ID));
 			} else {
 				int clickCountId = getClickCountId();
