@@ -47,7 +47,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 		// if we already have items in the database
 		int simpleC = 1;
 		for (SimpleData simple : list) {
-			sb.append("#").append(simpleC).append(": ").append(simple).append("\n");
+			sb.append('#').append(simpleC).append(": ").append(simple).append('\n');
 			simpleC++;
 		}
 		sb.append("------------------------------------------\n");
@@ -58,7 +58,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			Log.i(LOG_TAG, "deleting simple(" + simple.id + ")");
 			simpleC++;
 		}
-		sb.append("\n");
+		sb.append('\n');
 		sb.append("------------------------------------------\n");
 
 		int createNum;
@@ -75,7 +75,7 @@ public class HelloAndroid extends OrmLiteBaseActivity<DatabaseHelper> {
 			Log.i(LOG_TAG, "created simple(" + millis + ")");
 			// output it
 			sb.append('#').append(i + 1).append(": ");
-			sb.append(simple).append("\n");
+			sb.append(simple).append('\n');
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
