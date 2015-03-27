@@ -68,19 +68,19 @@ public class HelloAndroidH2 extends Activity {
 			List<SimpleData> list = simpleDao.queryForAll();
 			// our string builder for building the content-view
 			StringBuilder sb = new StringBuilder();
-			sb.append("got ").append(list.size()).append(" entries in ").append(action).append("\n");
+			sb.append("got ").append(list.size()).append(" entries in ").append(action).append('\n');
 
 			// if we already have items in the database
 			int simpleC = 0;
 			for (SimpleData simple : list) {
 				sb.append("------------------------------------------\n");
-				sb.append("[" + simpleC + "] = ").append(simple).append("\n");
+				sb.append("[" + simpleC + "] = ").append(simple).append('\n');
 				simpleC++;
 			}
 			sb.append("------------------------------------------\n");
 			for (SimpleData simple : list) {
 				simpleDao.delete(simple);
-				sb.append("deleted id ").append(simple.id).append("\n");
+				sb.append("deleted id ").append(simple.id).append('\n');
 				Log.i(LOG_TAG, "deleting simple(" + simple.id + ")");
 				simpleC++;
 			}
@@ -98,8 +98,8 @@ public class HelloAndroidH2 extends Activity {
 				Log.i(LOG_TAG, "created simple(" + millis + ")");
 				// output it
 				sb.append("------------------------------------------\n");
-				sb.append("created new entry #").append(i + 1).append(":\n");
-				sb.append(simple).append("\n");
+				sb.append("created new entry #").append(i + 1).append('\n');
+				sb.append(simple).append('\n');
 				try {
 					Thread.sleep(5);
 				} catch (InterruptedException e) {
