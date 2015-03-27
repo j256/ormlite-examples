@@ -104,19 +104,19 @@ public class HelloTwoDbs extends Activity {
 		Dao<SimpleData, Integer> simpleDao = getHelper1().getSimpleDataDao();
 		// query for all of the data objects in the database
 		List<SimpleData> list = simpleDao.queryForAll();
-		sb.append("got ").append(list.size()).append(" SimpleData entries in ").append(action).append("\n");
+		sb.append("got ").append(list.size()).append(" SimpleData entries in ").append(action).append('\n');
 		sb.append("------------------------------------------\n");
 
 		// if we already have items in the database
 		int objC = 0;
 		for (SimpleData simple : list) {
-			sb.append("[").append(objC).append("] = ").append(simple).append("\n");
+			sb.append('[').append(objC).append("] = ").append(simple).append('\n');
 			objC++;
 		}
 		sb.append("------------------------------------------\n");
 		for (SimpleData simple : list) {
 			simpleDao.delete(simple);
-			sb.append("deleted SimpleData id ").append(simple.id).append("\n");
+			sb.append("deleted SimpleData id ").append(simple.id).append('\n');
 			Log.i(LOG_TAG, "deleting SimpleData(" + simple.id + ")");
 		}
 
@@ -133,8 +133,8 @@ public class HelloTwoDbs extends Activity {
 			Log.i(LOG_TAG, "created SimpleData(" + millis + ")");
 			// output it
 			sb.append("------------------------------------------\n");
-			sb.append("created SimpleData entry #").append(i + 1).append(":\n");
-			sb.append(simple).append("\n");
+			sb.append("created SimpleData entry #").append(i + 1).append('\n');
+			sb.append(simple).append('\n');
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
@@ -155,13 +155,13 @@ public class HelloTwoDbs extends Activity {
 		// if we already have items in the database
 		int objC = 0;
 		for (ComplexData simple : list) {
-			sb.append("[").append(objC).append("] = ").append(simple).append("\n");
+			sb.append('[').append(objC).append("] = ").append(simple).append("\n");
 			objC++;
 		}
 		sb.append("------------------------------------------\n");
 		for (ComplexData simple : list) {
 			complexDao.delete(simple);
-			sb.append("deleted ComplexData id ").append(simple.id).append("\n");
+			sb.append("deleted ComplexData id ").append(simple.id).append('\n');
 			Log.i(LOG_TAG, "deleting ComplexData simple(" + simple.id + ")");
 		}
 
@@ -178,8 +178,8 @@ public class HelloTwoDbs extends Activity {
 			Log.i(LOG_TAG, "created ComplexData(" + millis + ")");
 			// output it
 			sb.append("------------------------------------------\n");
-			sb.append("created ComplexData entry #").append(i + 1).append(":\n");
-			sb.append(complex).append("\n");
+			sb.append("created ComplexData entry #").append(i + 1).append('\n');
+			sb.append(complex).append('\n');
 			try {
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
